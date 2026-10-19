@@ -1,52 +1,62 @@
 # Loop Cut para IngeTrazo
 
-Extensión independiente para insertar **un anillo de aristas** en una malla cerrada. Muestra una vista previa rosa antes de aplicar el corte. El archivo instalable es [`loop_cut.py`](loop_cut.py).
+Extensión independiente para crear cortes y seleccionar loops de aristas en mallas cerradas. Archivo instalable: [loop_cut.py](loop_cut.py).
 
-**Versión:** `v1.0` · **Licencia:** MIT · **Autor:** Daniel Wagner
+Versión preparada: v1.1.0 · Licencia: MIT · Autor: Daniel Wagner
+[English](README.en.md) · [Português](README.pt-BR.md)
 
-## Demostración visual
+## Novedades de v1.1.0
 
-Las dos imágenes son ejemplos independientes de orientación del corte; no representan fotogramas consecutivos.
+- Una pared lateral cilíndrica detecta automáticamente su banda cerrada de cuadriláteros.
+- Alt+clic selecciona el **bucle de aristas (Edge Loop)** en verde.
+- Shift+clic directamente sobre una arista selecciona y añade el **anillo de aristas (Edge Ring)** en azul oscuro.
+- El clic normal conserva el corte rosa y el deshacer en un solo paso.
 
-**Sección transversal:**
+## Demostración
 
-<img src="media/anel_horizontal.png" alt="Vista previa rosa de un anillo transversal" width="760">
+Rosa = **Corte en loop (Loop Cut)**; verde = **bucle de aristas (Edge Loop)**; azul oscuro = **anillo de aristas (Edge Ring)**.
 
-**Sección en otra orientación:**
-
-<img src="media/anel_vertical.png" alt="Vista previa rosa de un anillo en otra orientación" width="760">
+<img src="media/loop-selection-v1.1.0.png" alt="Loop Cut en un cilindro con corte rosa, loop verde y anillo azul oscuro" width="900">
 
 ## Instalación
 
-1. Descarga [`loop_cut.py`](loop_cut.py).
-2. En IngeTrazo, abre **Extensiones → Abrir carpeta de plugins**. En Windows suele ser `%APPDATA%\ingetrazo\plugins\`.
-3. Copia el archivo `.py` a esa carpeta y reinicia IngeTrazo.
+1. Descarga [loop_cut.py](loop_cut.py).
+2. En IngeTrazo abre **Extensiones → Abrir carpeta de plugins**. En Windows suele ser %APPDATA%\IngeTrazo\plugins\.
+3. Copia el archivo y reinicia IngeTrazo.
 
-La herramienta aparece en **Extensiones** y crea su propia barra **LoopTools**, con un icono rosa.
+La herramienta aparece en **Extensiones** y añade la barra **LoopTools**.
 
 ## Uso
 
-1. Activa **Corte em loop** desde el menú o su barra.
-2. Sitúa el cursor sobre una arista compartida por dos caras. La línea rosa muestra el corte previsto.
-3. Haz clic para crear el anillo. **Ctrl+Z** deshace la operación completa.
+1. Activa **Corte em loop** desde el menú o la barra.
+2. Sitúa el cursor sobre una arista o una cara lateral cuadrilateral.
 
-El corte se sitúa en el centro de la arista elegida; esta versión no permite deslizar el anillo ni elegir una posición numérica.
+   - Sin modificador: la línea rosa muestra el corte previsto.
+   - Con **Alt**: la previsualización verde muestra el **bucle de aristas (Edge Loop)**.
+   - Con **Shift** directamente sobre una arista existente: la previsualización azul oscuro muestra el **anillo de aristas (Edge Ring)**.
 
-## Cómo calcula el corte
+3. Haz clic según la acción deseada.
 
-En una banda cerrada de cuadriláteros, la extensión sigue las aristas opuestas de cada cara e inserta los puntos medios. Si ese recorrido no es válido, intenta una sección plana perpendicular a la arista elegida. Esto permite atravesar algunas piezas con triángulos y polígonos de más lados, siempre que cada cara tenga exactamente dos intersecciones y el recorrido forme un anillo cerrado.
+   - **Clic:** crea el corte.
+   - **Alt+clic:** selecciona el Edge Loop verde.
+   - **Shift+clic:** añade el Edge Ring azul oscuro a la selección.
 
-Antes de cambiar la malla, comprueba que cada cara puede dividirse por el segmento previsto. Descarta bordes abiertos, caras con agujeros, intersecciones sobre vértices existentes y recorridos ramificados o ambiguos. Al confirmar, divide las aristas compartidas y las caras afectadas, conserva los atributos de las caras y registra toda la operación como un único paso de deshacer.
+**Ctrl+Z** deshace el corte. Las selecciones no cambian la geometría.
 
-**Alcance:** trabaja sobre la malla activa. Admite las API de plugins 1 y 2; la API de IngeTrazo puede cambiar durante la serie 0.x. Las comprobaciones previas reducen errores de topología, pero no garantizan que cualquier geometría arbitraria pueda cortarse.
+## Cómo funciona
 
-## English
+Para el corte y el Edge Loop verde, la extensión recorre aristas opuestas de una banda cerrada de cuadriláteros. En la pared de un cilindro compara las cuatro aristas de la cara y usa la banda cerrada válida más larga; no hace falta acertar una arista vertical fina.
 
-Loop Cut inserts an edge ring in a closed mesh, with a pink preview and one-step undo. It traces opposite edges through a closed quad strip; for suitable mixed-face meshes, it tries a planar cross-section perpendicular to the selected edge. Open or ambiguous paths are rejected. Install `loop_cut.py` in IngeTrazo's plugins folder and restart the application.
+El anillo azul oscuro usa otra lógica: sigue aristas existentes, conectadas extremo con extremo y coplanares, hasta cerrar un ciclo. Puede seleccionar una fila horizontal creada por cortes anteriores.
 
-## Português
+Si no existe una banda de cuadriláteros válida, el clic normal conserva el corte por sección plana en piezas compatibles con triángulos o polígonos de más lados. Los recorridos abiertos, con agujeros, ramificados o ambiguos se rechazan antes de modificar la malla.
 
-O Loop Cut insere um anel de arestas numa malha fechada, com prévia rosa e um único passo de desfazer. Ele percorre as arestas opostas de uma faixa de quadriláteros ou tenta uma seção plana perpendicular à aresta escolhida em algumas malhas de faces mistas. Percursos abertos ou ambíguos são recusados. Instale `loop_cut.py` na pasta de plugins do IngeTrazo e reinicie o programa.
+## Alcance y límites
+
+- Trabaja sobre la malla activa y admite las API de plugins 1 y 2.
+- Los cortes se sitúan en el punto medio; no incluyen deslizamiento ni posición numérica.
+- La selección azul requiere una arista existente y un ciclo cerrado; no convierte curvas abiertas en loops.
+- La API de IngeTrazo puede cambiar durante la serie 0.x.
 
 ## Licencia
 
