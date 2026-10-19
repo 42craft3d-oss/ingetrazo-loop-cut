@@ -8,7 +8,7 @@ Actualización de selección y corte para superficies cuadriláteras, con atenci
 - El clic normal mantiene la previsualización rosa, el corte central y Ctrl+Z en un paso.
 - Se mantiene el corte por sección plana para geometría compatible de caras mixtas.
 
-Instalación: descarga loop_cut.py, cópialo en la carpeta que abre **Extensiones → Abrir carpeta de plugins** y reinicia IngeTrazo.
+Instalación: descarga loop_cut.py, cópialo en la carpeta que abre **Extensiones → Abrir carpeta de complementos** (sustituye el archivo anterior para actualizar) y reinicia IngeTrazo.
 
 ## English
 

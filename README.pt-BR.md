@@ -21,8 +21,8 @@ Rosa = **Corte em Loop (Loop Cut)**; verde = **Loop de Arestas (Edge Loop)**; az
 ## Instalação
 
 1. Baixe [loop_cut.py](loop_cut.py).
-2. No IngeTrazo, abra **Extensões → Abrir pasta de plugins**. No Windows, normalmente é %APPDATA%\IngeTrazo\plugins\.
-3. Copie o arquivo para essa pasta e reinicie o IngeTrazo.
+2. No IngeTrazo, abra **Extensões → Abrir pasta de complementos**. No Windows, normalmente é %APPDATA%\IngeTrazo\plugins\.
+3. Copie o arquivo para essa pasta — para atualizar, substitua o `loop_cut.py` anterior — e reinicie o IngeTrazo.
 
 ## Uso
 

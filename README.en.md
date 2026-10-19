@@ -21,8 +21,8 @@ Pink is the **Loop Cut** preview, green is the selected **Edge Loop**, and dark 
 ## Install
 
 1. Download [loop_cut.py](loop_cut.py).
-2. In IngeTrazo choose **Extensions → Open plugins folder**. On Windows it is usually %APPDATA%\IngeTrazo\plugins\.
-3. Copy the file there and restart IngeTrazo.
+2. In IngeTrazo choose **Extensions → Open add-ons folder**. On Windows it is usually %APPDATA%\IngeTrazo\plugins\.
+3. Copy the file there — to update, replace the previous `loop_cut.py` — and restart IngeTrazo.
 
 ## Use
 
