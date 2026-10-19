@@ -5,6 +5,8 @@ Standalone extension for creating cuts and selecting edge loops on closed meshes
 Prepared version: v1.1.0 · License: MIT · Author: Daniel Wagner
 [Español](README.md) · [Português](README.pt-BR.md)
 
+![Loop Cut cover](media/loop-cut-cover.png)
+
 ## What's new in v1.1.0
 
 - Hovering a cylinder side wall automatically detects its closed quad band and previews the transverse cut.
