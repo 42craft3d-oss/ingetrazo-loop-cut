@@ -5,6 +5,8 @@ Extensão independente para criar cortes e selecionar loops de arestas em malhas
 Versão preparada: v1.1.0 · Licença: MIT · Autor: Daniel Wagner
 [Español](README.md) · [English](README.en.md)
 
+![Capa do Loop Cut](media/loop-cut-cover.png)
+
 ## Novidades da v1.1.0
 
 - Ao apontar para a parede lateral de um cilindro, a extensão identifica automaticamente a faixa fechada de quadriláteros e mostra o corte transversal.

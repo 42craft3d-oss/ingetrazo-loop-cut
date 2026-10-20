@@ -5,6 +5,8 @@ Extensión independiente para crear cortes y seleccionar loops de aristas en mal
 Versión preparada: v1.1.0 · Licencia: MIT · Autor: Daniel Wagner
 [English](README.en.md) · [Português](README.pt-BR.md)
 
+![Portada de Loop Cut](media/loop-cut-cover.png)
+
 ## Novedades de v1.1.0
 
 - Una pared lateral cilíndrica detecta automáticamente su banda cerrada de cuadriláteros.
